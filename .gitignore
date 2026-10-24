@@ -1,0 +1,29 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python cache and build files
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Tests and tools
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets (never commit)
+.env
+.env.*
+!.env.example
+
+# Editor and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+.claude/settings.local.json
