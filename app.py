@@ -5,25 +5,28 @@ restaurantes = ['Restaurante 1', 'Restaurante 2', 'Restaurante 3']
 def exibir_nome_do_programa():
     print('Sabor Express\n')
 
-def finalizar_app():
+def exibir_subtitulo(texto):
     os.system('cls')
-    print('Finalizando o app\n')
+    print(f'{texto}\n')
+
+def finalizar_app():
+    exibir_subtitulo('Finalizando o app')
 
 def cadastrar_novo_restaurante():
-    os.system('cls')
-    print('Cadastrar novo restaurante\n')
+    exibir_subtitulo('Cadastrar novo restaurante')
     nome_do_restaurante = input('Digite o nome do restaurante: ')
     restaurantes.append(nome_do_restaurante)
     print(f'Restaurante {nome_do_restaurante} cadastrado com sucesso\n')
-    input('Pressione enter para voltar ao menu principal')
-    main()
+    voltar_ao_menu_principal()
 
 def listar_restaurantes():
-    os.system('cls')
-    print('Listar restaurantes\n')
+    exibir_subtitulo('Listar restaurantes')
     for restaurante in restaurantes:
         print(f'{restaurante}')
-    input('Pressione enter para voltar ao menu principal')
+    voltar_ao_menu_principal()
+
+def voltar_ao_menu_principal():
+    input('\nPressione enter para voltar ao menu principal\n')
     main()
 
 def exibir_opcoes():
@@ -34,8 +37,7 @@ def exibir_opcoes():
 
 def opcao_invalida():
     print('Opção inválida\n')
-    input('Pressione enter para continuar')
-    main()
+    voltar_ao_menu_principal()
 
 def escolher_opcao():
     try:
