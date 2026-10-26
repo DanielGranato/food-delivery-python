@@ -16,9 +16,15 @@ def finalizar_app():
 
 def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastrar novo restaurante')
-    nome_do_restaurante = input('Digite o nome do restaurante: ')
-    restaurantes.append(nome_do_restaurante)
-    print(f'Restaurante {nome_do_restaurante} cadastrado com sucesso\n')
+    nome_restaurante = input('Digite o nome do restaurante: ')
+    categoria = input('Digite a categoria do restaurante: ')
+    dados_do_restaurante = {
+        'nome': nome_restaurante,
+        'categoria': categoria,
+        'ativo': False
+    }
+    restaurantes.append(dados_do_restaurante)
+    print(f'Restaurante {nome_restaurante} cadastrado com sucesso\n')
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
