@@ -32,8 +32,8 @@ def listar_restaurantes():
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
-        ativo = restaurante['ativo']
-        print(f'- {nome_restaurante} | {categoria} | {ativo}')
+        ativo = "ativado" if restaurante['ativo'] else "desativado"
+        print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo.ljust(20)}')
     voltar_ao_menu_principal()
 
 def voltar_ao_menu_principal():
@@ -43,8 +43,22 @@ def voltar_ao_menu_principal():
 def exibir_opcoes():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
-    print('3. Ativar restaurante')
+    print('3. Alterar estado do restaurante')
     print('4. Sair\n')
+
+def alterar_estado_restaurante():
+    exibir_subtitulo('Alterar estado do restaurante')
+    nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ')
+    restaurante_encontrado = False
+    for restaurante in restaurantes:
+        if nome_restaurante == restaurante['nome']:
+            restaurante_encontrado = True
+            restaurante['ativo'] = not restaurante['ativo']
+            mensagem = 'Restaurante ativado com sucesso' if restaurante['ativo'] else 'Restaurante desativado com sucesso'
+            print(mensagem)
+    if not restaurante_encontrado:
+        print('Restaurante não encontrado\n')
+    voltar_ao_menu_principal()
 
 def opcao_invalida():
     print('Opção inválida\n')
@@ -53,18 +67,19 @@ def opcao_invalida():
 def escolher_opcao():
     try:
         opcao_escolhida = int(input('Escolha uma opção: '))
-        
-        if opcao_escolhida == 1: 
-            cadastrar_novo_restaurante()
-        elif opcao_escolhida == 2: 
-            listar_restaurantes()
-        elif opcao_escolhida == 3: 
-            print('Ativar restaurante')
-        elif opcao_escolhida == 4: 
-            finalizar_app()
-        else:
-            opcao_invalida()
-    except: 
+    except ValueError:
+        opcao_invalida()
+        return
+
+    if opcao_escolhida == 1:
+        cadastrar_novo_restaurante()
+    elif opcao_escolhida == 2:
+        listar_restaurantes()
+    elif opcao_escolhida == 3:
+        alterar_estado_restaurante()
+    elif opcao_escolhida == 4:
+        finalizar_app()
+    else:
         opcao_invalida()
 
 def main():
