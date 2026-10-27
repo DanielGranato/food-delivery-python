@@ -1,8 +1,9 @@
 import os
+from modelos.restaurante import Restaurante
 
-restaurantes = [{'nome':'Praça', 'categoria':'Japonesa', 'ativo':False}, 
-                    {'nome':'Pizza Superma', 'categoria':'Pizza', 'ativo':True},
-                    {'nome':'Cantina', 'categoria':'Italiano', 'ativo':False}]
+restaurantes = [Restaurante('Praça', 'Japonesa', False), 
+                    Restaurante('Pizza Superma', 'Pizza', True),
+                    Restaurante('Cantina', 'Italiano', False)]
 
 def exibir_nome_do_programa():
     print('Sabor Express\n')
@@ -18,22 +19,15 @@ def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastrar novo restaurante')
     nome_restaurante = input('Digite o nome do restaurante: ')
     categoria = input('Digite a categoria do restaurante: ')
-    dados_do_restaurante = {
-        'nome': nome_restaurante,
-        'categoria': categoria,
-        'ativo': False
-    }
-    restaurantes.append(dados_do_restaurante)
+    restaurantes.append(Restaurante(nome_restaurante, categoria))
     print(f'Restaurante {nome_restaurante} cadastrado com sucesso\n')
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
     exibir_subtitulo('Listar restaurantes')
     for restaurante in restaurantes:
-        nome_restaurante = restaurante['nome']
-        categoria = restaurante['categoria']
-        ativo = "ativado" if restaurante['ativo'] else "desativado"
-        print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo.ljust(20)}')
+        ativo = "ativado" if restaurante.ativo else "desativado"
+        print(f'- {restaurante.nome.ljust(20)} | {restaurante.categoria.ljust(20)} | {ativo.ljust(20)}')
     voltar_ao_menu_principal()
 
 def voltar_ao_menu_principal():
@@ -51,10 +45,10 @@ def alterar_estado_restaurante():
     nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ')
     restaurante_encontrado = False
     for restaurante in restaurantes:
-        if nome_restaurante == restaurante['nome']:
+        if nome_restaurante == restaurante.nome:
             restaurante_encontrado = True
-            restaurante['ativo'] = not restaurante['ativo']
-            mensagem = 'Restaurante ativado com sucesso' if restaurante['ativo'] else 'Restaurante desativado com sucesso'
+            restaurante.ativo = not restaurante.ativo
+            mensagem = 'Restaurante ativado com sucesso' if restaurante.ativo else 'Restaurante desativado com sucesso'
             print(mensagem)
     if not restaurante_encontrado:
         print('Restaurante não encontrado\n')
