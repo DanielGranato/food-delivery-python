@@ -9,10 +9,13 @@ Learning project: a food delivery app in Python to practice functions, object-or
 - Ask before adding any dependency that is not listed here.
 - When I ask for a solution, show the simple version first. Mention the more advanced option in one line only.
 
+## Project history
+This is a single project that grows with my Alura courses. It started as a terminal app where restaurants were dictionaries inside a list. I am now refactoring it to use classes, following the object-oriented programming course (class `Restaurante` in `modelos/restaurante.py`). Keep using classes and objects; do not go back to dictionaries. Follow the course's lessons and naming (Portuguese names for functions, variables and classes, as in the course).
+
 ## Stack
 - Python 3.12 or newer, virtual environment in `.venv/`
 - `requests` for API calls
-- `pytest` for tests
+- No test tools yet. I will add pytest when the course reaches testing.
 - Terminal (CLI) app: text menus with `input()` and `print()`. No GUI and no web framework.
 - TODO: which API is consumed
 
@@ -35,14 +38,13 @@ Follow the folder structure and file names from the Alura course I am currently 
 
 ## Rules
 - Never commit `.venv/`, `__pycache__/`, `.env` or any secret.
-- Run `pytest` before saying a task is done, and tell me if there are no tests yet for what you changed.
+- After a change, tell me how to run the app and what to check by hand. Do not install testing tools unless I ask.
 - Keep `README.md` in sync when features or commands change.
 
 ## Commands
 - `python -m venv .venv` and `source .venv/bin/activate` (Windows: `.venv\Scripts\activate`)
 - `pip install -r requirements.txt`
 - `python main.py`
-- `pytest`
 
 ## How to work with me
 - I am following the Alura "Python back end" career path. Match the course's style and examples when possible, and tell me when you do something differently from the lesson.
