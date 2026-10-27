@@ -1,9 +1,9 @@
 import os
 from modelos.restaurante import Restaurante
 
-restaurantes = [Restaurante('Praça', 'Japonesa', False), 
-                    Restaurante('Pizza Superma', 'Pizza', True),
-                    Restaurante('Cantina', 'Italiano', False)]
+Restaurante('Praça', 'Japonesa', False)
+Restaurante('Pizza Superma', 'Pizza', True)
+Restaurante('Cantina', 'Italiano', False)
 
 def exibir_nome_do_programa():
     print('Sabor Express\n')
@@ -19,15 +19,13 @@ def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastrar novo restaurante')
     nome_restaurante = input('Digite o nome do restaurante: ')
     categoria = input('Digite a categoria do restaurante: ')
-    restaurantes.append(Restaurante(nome_restaurante, categoria))
+    Restaurante(nome_restaurante, categoria)
     print(f'Restaurante {nome_restaurante} cadastrado com sucesso\n')
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
     exibir_subtitulo('Listar restaurantes')
-    for restaurante in restaurantes:
-        ativo = "ativado" if restaurante.ativo else "desativado"
-        print(f'- {restaurante.nome.ljust(20)} | {restaurante.categoria.ljust(20)} | {ativo.ljust(20)}')
+    Restaurante.listar_restaurantes()
     voltar_ao_menu_principal()
 
 def voltar_ao_menu_principal():
@@ -44,7 +42,7 @@ def alterar_estado_restaurante():
     exibir_subtitulo('Alterar estado do restaurante')
     nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ')
     restaurante_encontrado = False
-    for restaurante in restaurantes:
+    for restaurante in Restaurante.restaurantes:
         if nome_restaurante == restaurante.nome:
             restaurante_encontrado = True
             restaurante.ativo = not restaurante.ativo
