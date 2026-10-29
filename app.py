@@ -1,9 +1,13 @@
 import os
 from modelos.restaurante import Restaurante
+from modelos.avaliacao import Avaliacao
 
-Restaurante('Praça', 'Japonesa', False)
 Restaurante('Pizza Superma', 'Pizza', True)
 Restaurante('Cantina', 'Italiano', False)
+
+restaurante_praca = Restaurante('Praça', 'Japonesa')
+restaurante_praca.receber_avaliacao('Gui', 10)
+
 
 def exibir_nome_do_programa():
     print('Sabor Express\n')
