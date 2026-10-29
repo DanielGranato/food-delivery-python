@@ -1,12 +1,17 @@
 import os
 from modelos.restaurante import Restaurante
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.prato import Prato
+from modelos.cardapio.bebida import Bebida
 
 Restaurante('Pizza Superma', 'Pizza', True)
 Restaurante('Cantina', 'Italiano', False)
 
 restaurante_praca = Restaurante('Praça', 'Japonesa')
 restaurante_praca.receber_avaliacao('Gui', 10)
+
+prato_pizza = Prato('Pizza', 30.00, 'Pizza de calabresa')
+bebida_refrigerante = Bebida('Refrigerante', 5.00, '2L')
 
 
 def exibir_nome_do_programa():
