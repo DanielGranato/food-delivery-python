@@ -29,7 +29,8 @@ class Restaurante:
         """Print every registered restaurant."""
         for restaurante in cls.restaurantes:
             ativo = 'Ativado' if restaurante._ativo else 'Desativado'
-            print(f'- {restaurante._nome.ljust(20)} | {restaurante._categoria.ljust(20)} | {str(restaurante.media_avaliacoes).ljust(20)} | {ativo.ljust(20)}')
+            media = str(restaurante.media_avaliacoes) if restaurante._avaliacoes else 'Sem avaliações'
+            print(f'- {restaurante._nome.ljust(20)} | {restaurante._categoria.ljust(20)} | {media.ljust(20)} | {ativo.ljust(20)}')
 
     def receber_avaliacao(self, cliente: str, nota: int) -> None:
         """Add an evaluation to the restaurant."""
