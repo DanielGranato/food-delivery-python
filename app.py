@@ -45,7 +45,7 @@ def alterar_estado_restaurante():
     for restaurante in Restaurante.restaurantes:
         if nome_restaurante == restaurante.nome:
             restaurante_encontrado = True
-            restaurante.ativo = not restaurante.ativo
+            restaurante.alternar_estado()
             mensagem = 'Restaurante ativado com sucesso' if restaurante.ativo else 'Restaurante desativado com sucesso'
             print(mensagem)
     if not restaurante_encontrado:
@@ -82,5 +82,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
