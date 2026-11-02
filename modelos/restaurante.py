@@ -1,4 +1,5 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
 
 class Restaurante:
     restaurantes = []
@@ -8,6 +9,7 @@ class Restaurante:
         self._categoria = categoria
         self._ativo = ativo
         self._avaliacoes = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
 
     @property
@@ -47,3 +49,29 @@ class Restaurante:
         quantidade_de_avaliacoes = len(self._avaliacoes)
         media = round(soma_das_avaliacoes / quantidade_de_avaliacoes, 1)
         return media
+
+    #def adicionar_bebida(self, bebida: Bebida) -> None:
+      #  """Add a beverage to the restaurant."""
+      #  self._bebidas.append(bebida)
+
+    #def adicionar_prato(self, prato: Prato) -> None:
+      #  """Add a dish to the restaurant."""
+      #  self._pratos.append(prato)
+
+    #refactor
+
+    @property
+    def cardapio(self) -> list[ItemCardapio]:
+        """Restaurant menu items (read-only)."""
+        return self._cardapio
+
+    def adicionar_no_cardapio(self, item: ItemCardapio) -> None:
+        """Add an item to the restaurant's menu."""
+        self._cardapio.append(item)
+
+    def exibir_cardapio(self):
+        print(f'Cardápio do restaurante {self._nome}\n')
+        for i, item in enumerate(self._cardapio, start=1):
+            print(f'{i}. {item}')
+
+    

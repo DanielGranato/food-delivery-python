@@ -13,6 +13,10 @@ restaurante_praca.receber_avaliacao('Gui', 10)
 prato_pizza = Prato('Pizza', 30.00, 'Pizza de calabresa')
 bebida_refrigerante = Bebida('Refrigerante', 5.00, '2L')
 
+restaurante_praca.adicionar_no_cardapio(prato_pizza)
+restaurante_praca.adicionar_no_cardapio(bebida_refrigerante)
+
+print(restaurante_praca.cardapio)
 
 def exibir_nome_do_programa():
     print('Sabor Express\n')
