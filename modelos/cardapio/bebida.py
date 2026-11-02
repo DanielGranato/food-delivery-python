@@ -14,4 +14,7 @@ class Bebida(ItemCardapio):
         """Bebida size (read-only)."""
         return self._tamanho
     
-    
+    def aplicar_desconto(self) -> float:
+        """Apply a discount to the beverage."""
+        self._preco -= self._preco * 0.05
+        return self._preco

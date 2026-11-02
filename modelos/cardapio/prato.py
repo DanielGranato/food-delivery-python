@@ -14,4 +14,8 @@ class Prato (ItemCardapio):
         """Prato description (read-only)."""
         return self._descricao
     
+    def aplicar_desconto(self) -> float:
+        """Apply a discount to the dish."""
+        self._preco -= self._preco * 0.08
+        return self._preco  
 

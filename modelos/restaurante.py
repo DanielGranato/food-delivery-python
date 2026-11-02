@@ -69,9 +69,9 @@ class Restaurante:
         """Add an item to the restaurant's menu."""
         self._cardapio.append(item)
 
-    def exibir_cardapio(self):
+    def exibir_cardapio(self) -> None:
         print(f'Cardápio do restaurante {self._nome}\n')
         for i, item in enumerate(self._cardapio, start=1):
-            print(f'{i}. {item}')
+            print(f'{i}. {item.nome.ljust(20)} | R$ {item.preco:.2f}')
 
     
