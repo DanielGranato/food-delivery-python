@@ -3,6 +3,7 @@ from modelos.restaurante import Restaurante
 from modelos.avaliacao import Avaliacao
 from modelos.cardapio.prato import Prato
 from modelos.cardapio.bebida import Bebida
+from services.api_restaurantes import carregar_restaurantes_da_api
 
 Restaurante('Pizza Superma', 'Pizza', True)
 Restaurante('Cantina', 'Italiano', False)
@@ -89,12 +90,14 @@ def escolher_opcao():
 
 def main():
     os.system('cls')
+    restaurantes = carregar_restaurantes_da_api()
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
 
 if __name__ == '__main__':
     main()
+
 
 
 

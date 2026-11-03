@@ -2,14 +2,14 @@ from modelos.avaliacao import Avaliacao
 from modelos.cardapio.item_cardapio import ItemCardapio
 
 class Restaurante:
-    restaurantes = []
+    restaurantes: list[Restaurante] = []
 
     def __init__(self, nome: str, categoria: str, ativo: bool = False) -> None:
         self._nome = nome
         self._categoria = categoria
         self._ativo = ativo
-        self._avaliacoes = []
-        self._cardapio = []
+        self._avaliacoes: list[Avaliacao] = []
+        self._cardapio: list[ItemCardapio] = []
         Restaurante.restaurantes.append(self)
 
     @property
