@@ -17,7 +17,7 @@ This is a single project that grows with my Alura courses. It started as a termi
 - `requests` for API calls
 - No test tools yet. I will add pytest when the course reaches testing.
 - Terminal (CLI) app: text menus with `input()` and `print()`. No GUI and no web framework.
-- TODO: which API is consumed
+- API consumed: https://guilhermeonrails.github.io/api-restaurantes/restaurantes.json (from the course; the data contains real brand names)
 
 ## Structure
 Follow the folder structure and file names from the Alura course I am currently taking. Do not create extra folders or layers on your own. If I ask where something should go, suggest the simplest option and explain why in one or two sentences. We can reorganize later when the project grows.
