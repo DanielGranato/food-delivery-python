@@ -4,20 +4,29 @@ from modelos.avaliacao import Avaliacao
 from modelos.cardapio.prato import Prato
 from modelos.cardapio.bebida import Bebida
 from services.api_restaurantes import carregar_restaurantes_da_api
+from services.arquivos import salvar_restaurantes_em_arquivo, carregar_restaurantes_do_arquivo
 
-Restaurante('Pizza Superma', 'Pizza', True)
-Restaurante('Cantina', 'Italiano', False)
+ARQUIVO_RESTAURANTES = 'restaurantes.json'
 
-restaurante_praca = Restaurante('Praça', 'Japonesa')
-restaurante_praca.receber_avaliacao('Gui', 10)
+# Restaurante('Pizza Superma', 'Pizza', True)
+# Restaurante('Cantina', 'Italiano', False)
+#
+# restaurante_praca = Restaurante('Praça', 'Japonesa')
+# restaurante_praca.receber_avaliacao('Gui', 10)
+#
+# prato_pizza = Prato('Pizza', 30.00, 'Pizza de calabresa')
+# bebida_refrigerante = Bebida('Refrigerante', 5.00, '2L')
+#
+# restaurante_praca.adicionar_no_cardapio(prato_pizza)
+# restaurante_praca.adicionar_no_cardapio(bebida_refrigerante)
+#
+# print(restaurante_praca.cardapio)
 
-prato_pizza = Prato('Pizza', 30.00, 'Pizza de calabresa')
-bebida_refrigerante = Bebida('Refrigerante', 5.00, '2L')
-
-restaurante_praca.adicionar_no_cardapio(prato_pizza)
-restaurante_praca.adicionar_no_cardapio(bebida_refrigerante)
-
-print(restaurante_praca.cardapio)
+def carregar_dados_iniciais():
+    """Load restaurants from the saved file, or from the API if there is none."""
+    if os.path.exists(ARQUIVO_RESTAURANTES) and carregar_restaurantes_do_arquivo():
+        return
+    carregar_restaurantes_da_api()
 
 def exibir_nome_do_programa():
     print('Sabor Express\n')
@@ -28,6 +37,9 @@ def exibir_subtitulo(texto):
 
 def finalizar_app():
     exibir_subtitulo('Finalizando o app')
+    restaurantes_por_nome = {restaurante.nome: restaurante for restaurante in Restaurante.restaurantes}
+    salvar_restaurantes_em_arquivo(restaurantes_por_nome)
+    print('Restaurantes salvos em restaurantes.json')
 
 def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastrar novo restaurante')
@@ -95,7 +107,7 @@ def main():
     escolher_opcao()
 
 if __name__ == '__main__':
-    carregar_restaurantes_da_api()
+    carregar_dados_iniciais()
     main()
 
 
