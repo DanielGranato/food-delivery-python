@@ -90,12 +90,12 @@ def escolher_opcao():
 
 def main():
     os.system('cls')
-    restaurantes = carregar_restaurantes_da_api()
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
 
 if __name__ == '__main__':
+    carregar_restaurantes_da_api()
     main()
 
 

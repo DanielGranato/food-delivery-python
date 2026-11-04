@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from modelos.avaliacao import Avaliacao
 from modelos.cardapio.item_cardapio import ItemCardapio
 
@@ -64,6 +66,10 @@ class Restaurante:
     def cardapio(self) -> list[ItemCardapio]:
         """Restaurant menu items (read-only)."""
         return self._cardapio
+
+    def para_dicionario(self) -> dict:
+        """Return the restaurant as a plain dict, ready for JSON."""
+        return {'nome': self._nome, 'categoria': self._categoria, 'ativo': self._ativo}
 
     def adicionar_no_cardapio(self, item: ItemCardapio) -> None:
         """Add an item to the restaurant's menu."""
