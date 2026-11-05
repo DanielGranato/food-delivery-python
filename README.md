@@ -106,6 +106,7 @@ requirements.txt             dependencies
 - [x] API client
 - [x] Save and load restaurants
 - [ ] Save menu items and ratings
+- [ ] Unify the data source between the terminal menu and the FastAPI API
 - [ ] Order flow
 - [ ] Tests
 
