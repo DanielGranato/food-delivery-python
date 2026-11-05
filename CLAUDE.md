@@ -16,7 +16,8 @@ This is a single project that grows with my Alura courses. It started as a termi
 - Python 3.12 or newer, virtual environment in `.venv/`
 - `requests` for API calls
 - No test tools yet. I will add pytest when the course reaches testing.
-- Terminal (CLI) app: text menus with `input()` and `print()`. No GUI and no web framework.
+- `fastapi` and `uvicorn` to expose the restaurants as an HTTP API (new phase, branch `feature/fastapi`). I follow an online lesson for this; we may deviate from it, so tell me when we do.
+- Terminal (CLI) app: text menus with `input()` and `print()` stays as it is (`app.py`). No GUI.
 - API consumed: https://guilhermeonrails.github.io/api-restaurantes/restaurantes.json (from the course; the data contains real brand names)
 
 ## Structure
