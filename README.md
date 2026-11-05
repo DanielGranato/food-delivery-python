@@ -2,7 +2,7 @@
 
 > Python food delivery app: functions, OOP and API consumption.
 
-A learning project built to practice core Python topics: functions, object-oriented programming and consuming a web API. It is a **terminal (command line) app** for study purposes; no real orders or payments are involved.
+A learning project built to practice core Python topics: functions, object-oriented programming and consuming a web API. It is a **terminal (command line) app**, plus a small **FastAPI** API, for study purposes; no real orders or payments are involved.
 
 ## What it does
 
@@ -11,6 +11,7 @@ A learning project built to practice core Python topics: functions, object-orien
 - Registers new restaurants and switches a restaurant between active and inactive.
 - Saves the restaurants to `restaurantes.json` when you exit, and loads that file on the next run (the API is only used when there is no saved file).
 - Handles network and file errors without crashing.
+- Exposes the restaurants as JSON through a FastAPI endpoint (`GET /api/restaurantes/`, with an optional name filter).
 
 The menu text is in Portuguese:
 
@@ -67,10 +68,25 @@ python app.py
 
 Choose option `4` (Sair) to exit and save the restaurants. To start over from the API, delete `restaurantes.json`.
 
+**5. (Optional) Run the FastAPI server** with the virtual environment active:
+
+```bash
+uvicorn main:app --reload
+```
+
+Then open:
+
+- <http://127.0.0.1:8000/api/restaurantes/> to list the restaurants
+- <http://127.0.0.1:8000/api/restaurantes/?restaurante=burger> to filter by name
+- <http://127.0.0.1:8000/docs> for the interactive documentation
+
+The FastAPI app loads its data from the external API when the server starts. It does not read `restaurantes.json` yet, so restaurants created in the terminal menu do not appear there (see the Status section).
+
 ## Project structure
 
 ```
 app.py                       entry point and terminal menu
+main.py                      FastAPI app (HTTP API)
 modelos/
   restaurante.py             Restaurante class (also keeps the list of all restaurants)
   avaliacao.py               Avaliacao class (a customer rating)
@@ -93,11 +109,13 @@ requirements.txt             dependencies
 | Inheritance, abstract classes, polymorphism | `modelos/cardapio/` |
 | API consumption (`requests`, timeout, status codes, errors) | `services/api_restaurantes.py` |
 | Reading and writing JSON files | `services/arquivos.py` |
+| Building an HTTP API (FastAPI routes, query parameters) | `main.py` |
 
 ## Tech stack
 
 - Python 3.12+
-- `requests` (HTTP)
+- `requests` (HTTP client)
+- `fastapi` and `uvicorn` (HTTP API and server)
 
 ## Status
 
@@ -105,6 +123,7 @@ requirements.txt             dependencies
 - [x] Models (OOP)
 - [x] API client
 - [x] Save and load restaurants
+- [x] FastAPI endpoint to list restaurants
 - [ ] Save menu items and ratings
 - [ ] Unify the data source between the terminal menu and the FastAPI API
 - [ ] Order flow
